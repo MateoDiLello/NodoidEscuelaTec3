@@ -49,26 +49,30 @@ void loop() {
                   //comparamos los UID para determinar si es uno de nuestros usuarios  
                   DateTime fecha = rtc.now();      // funcion que devuelve fecha y horario en formato
             // DateTime y asigna a variable fecha
-                  if(compareArray(ActualUID,Usuario1))
-                    Serial.println("Acceso concedido"),
-                    digitalWrite(3, HIGH),
-                    delay(2500),
-                    digitalWrite(3, LOW),
-                    delay(250),
-                    Serial.println(fecha.day()),     // funcion que obtiene el dia de la fecha completa
-                    Serial.println(fecha.month()),     // funcion que obtiene el mes de la fecha completa
-                    Serial.println("/"),      // caracter barra como separador
-                    Serial.println(fecha.year()),      // funcion que obtiene el año de la fecha completa
-                    Serial.println("/"),       // caracter barra como separador
-                    Serial.println(" "),       // caracter espacio en blanco como separador
-                    Serial.println(fecha.hour()),      // funcion que obtiene la hora de la fecha completa
-                    Serial.println(":"),       // caracter dos puntos como separador
-                    Serial.println(fecha.minute()),      // funcion que obtiene los minutos de la fecha completa
-                    Serial.println(":"),       // caracter dos puntos como separador
-                    Serial.println(fecha.second()),    // funcion que obtiene los segundos de la fecha completa
-                    mfrc522.PICC_HaltA();
-                    
+                  if(compareArray(ActualUID,Usuario1)){
+                  
+                    Serial.println("Acceso concedido");
+                     mfrc522.PICC_HaltA();
+                    digitalWrite(3, HIGH);
+                    Serial.print(fecha.day());     // funcion que obtiene el dia de la fecha completa
+                    Serial.print("/");  
+                    Serial.print(fecha.month());     // funcion que obtiene el mes de la fecha completa
+                    Serial.print("/");  
+                    Serial.print(fecha.year());      // funcion que obtiene el año de la fecha completa
+                    Serial.print(" ");       // caracter espacio en blanco como separador
+// caracter barra como separador
+                    Serial.print(fecha.hour());      // funcion que obtiene la hora de la fecha completa
+                    Serial.print(":");       // caracter dos puntos como separador
+                    Serial.print(fecha.minute());      // funcion que obtiene los minutos de la fecha completa
+                    Serial.print(":");       // caracter dos puntos como separador
+                    Serial.print(fecha.second());    // funcion que obtiene los segundos de la fecha completa
+                    Serial.println("");
+                    delay(2500);
+                    digitalWrite(3,LOW);
+                      // Terminamos la lectura de la tarjeta tarjeta  actual
+          
 
+                  }
                   else if(compareArray(ActualUID,Usuario2))
                     Serial.println("Acceso concedido"),
                     digitalWrite(3, HIGH),
